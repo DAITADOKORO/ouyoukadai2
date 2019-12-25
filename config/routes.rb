@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   root 'home#top'
   get 'home/about'
+  resources :relationships, only: [:create, :destroy]
 end
