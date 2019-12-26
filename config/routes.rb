@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
   root 'home#top'
   get 'home/about'
+  get 'search/search'
   resources :relationships, only: [:create, :destroy]
 end

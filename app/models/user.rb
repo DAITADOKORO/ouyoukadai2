@@ -29,6 +29,26 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+
+    def self.search(method,word)
+      if method == "forward_match"
+              @users = User.where("name LIKE?","#{word}%")
+      elsif method == "backward_match"
+              @users = User.where("name LIKE?","%#{word}")
+      elsif method == "perfect_match"
+              @users = User.where("name LIKE?","#{word}")
+      elsif method == "partial_match"
+              @users = User.where("name LIKE?","%#{word}%")
+      else
+              @users = User.all
+      end
+    end
+
+
+
+
+
+
   attachment :profile_image, destroy: false
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
